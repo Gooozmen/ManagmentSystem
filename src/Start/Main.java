@@ -16,11 +16,11 @@ public class Main {
     public static void main(String[] args)
     {
         //database
-        //DatabaseManager DBManager = new DatabaseManager();
-        //Connection connection = DBManager.Connect();
+        DatabaseManager DBManager = new DatabaseManager();
+        Connection connection = DBManager.Connect();
 
         //repositories
-        //CustomerRepository customerRepository = new CustomerRepository();
+        CustomerRepository customerRepository = new CustomerRepository();
         //EventRepository eventRepository = new EventRepository();
         //SaleRepository saleRepository = new SaleRepository();
 
@@ -43,7 +43,7 @@ public class Main {
 
         //System.out.println(response);
 
-        Login loginPage = new Login();
+        Login loginPage = new Login(connection,customerRepository);
 
     }
 }

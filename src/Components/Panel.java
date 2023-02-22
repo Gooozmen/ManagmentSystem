@@ -5,9 +5,8 @@ import java.awt.*;
 
 public class Panel extends JPanel
 {
-    public Panel(Color color, int x, int y, int width, int height)
+    public Panel()
     {
-        this.setBackground(color);
-        this.setBounds(x,y,width,height);
+        this.setLayout(null);
     }
 }

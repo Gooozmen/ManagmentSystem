@@ -1,7 +1,7 @@
 package Repositories;
 
 import Entities.Event;
-import ExceptionHandlres.SQLHandler;
+import ExceptionHandlers.SQLHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
