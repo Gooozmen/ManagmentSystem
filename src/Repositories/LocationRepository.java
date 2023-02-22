@@ -1,13 +1,10 @@
 package Repositories;
 
-import Entities.Customer;
 import Entities.Location;
-import Entities.Sale;
-import ExceptionHandlres.SQLHandler;
+import ExceptionHandlers.SQLHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class LocationRepository

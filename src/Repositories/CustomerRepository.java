@@ -1,7 +1,7 @@
 package Repositories;
 
 import Entities.Customer;
-import ExceptionHandlres.SQLHandler;
+import ExceptionHandlers.SQLHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -254,14 +254,14 @@ public class CustomerRepository
         else { return false; }
     }
 
-    public boolean Login(int dni, String password, Connection connection)
+    public int Login(int dni, String password, Connection connection)
     {
         int validDNI = 0;
         String validPassword = "";
 
         try(connection)
         {
-            String query = "SELECT PASSWORD FROM CUSTOMER WHERE DNI = ?";
+            String query = "SELECT DNI, PASSWORD FROM CUSTOMER WHERE DNI = ?";
 
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1,dni);
@@ -280,21 +280,25 @@ public class CustomerRepository
             sqlHandler.ShowSQLException(e);
         }
 
-        if(ValidateCredentials(validDNI,validPassword,dni,password))
+        if(ValidateCredentials(validPassword,password))
         {
             System.out.println("WELCOME");
-            return true;
+            return 1;
+        }
+        if(validDNI == 0)
+        {
+            return -1;
         }
         else
         {
             System.out.println("INVALID CREDENTIALS");
-            return false;
+            return 0;
         }
     }
 
-    public boolean ValidateCredentials(int validDNI, String validPassword, int actualDNI, String actualPassword)
+    public boolean ValidateCredentials(String validPassword,String actualPassword)
     {
-        if(validDNI==actualDNI && validPassword == actualPassword)
+        if(validPassword.equals(actualPassword))
         {
             return true;
         }

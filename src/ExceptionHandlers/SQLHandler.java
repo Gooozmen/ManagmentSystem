@@ -1,4 +1,4 @@
-package ExceptionHandlres;
+package ExceptionHandlers;
 import java.sql.SQLException;
 
 public class SQLHandler
