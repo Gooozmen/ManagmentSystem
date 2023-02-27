@@ -4,9 +4,8 @@ import javax.swing.*;
 
 public class TextField extends JTextField {
 
-    public TextField(int x, int y, int width, int height,int columns)
+    public TextField(int x, int y, int width, int height)
     {
-        this.setColumns(columns);
         this.setBounds(x,y,width,height);
     }
 }

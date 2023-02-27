@@ -1,16 +1,9 @@
 package Start;
 
-import java.awt.*;
 import java.sql.Connection;
-import java.util.List;
-
-import Components.Frame;
 import DB.DatabaseManager;
-import Entities.*;
-import Pages.Login;
-import Repositories.CustomerRepository;
-import Repositories.EventRepository;
-import Repositories.SaleRepository;
+import Pages.*;
+import Repositories.*;
 
 public class Main {
     public static void main(String[] args)
@@ -31,7 +24,7 @@ public class Main {
         //Customer customer = customerRepository.GetBy(9582454,connection);
         //customerRepository.Print(customer);
 
-        //Customer _c ustomer = new Customer(95822454,"JULIANE","XSD123",2);
+        //Customer _customer = new Customer(95822454,"JULIANE","XSD123",2);
         //Boolean response = customerRepository.Create(_customer,connection);
 
         //Boolean response = customerRepository.Delete(20355465,connection);
@@ -43,7 +36,8 @@ public class Main {
 
         //System.out.println(response);
 
-        Login loginPage = new Login(connection,customerRepository);
+        Login loginPage = new Login(DBManager,customerRepository);
+
 
     }
 }

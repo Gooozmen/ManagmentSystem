@@ -1,5 +1,6 @@
 package Repositories;
 
+import DB.DatabaseManager;
 import Entities.Customer;
 import ExceptionHandlers.SQLHandler;
 
@@ -9,6 +10,8 @@ import java.util.List;
 
 public class CustomerRepository
 {
+    DatabaseManager db;
+
     public void Print(Customer customer)
     {
         System.out.println("DNI: " + customer.getDni());
@@ -256,42 +259,23 @@ public class CustomerRepository
 
     public int Login(int dni, String password, Connection connection)
     {
-        int validDNI = 0;
-        String validPassword = "";
-
-        try(connection)
+        Customer customer = GetBy(dni, connection);
+        if(customer != null)
         {
-            String query = "SELECT DNI, PASSWORD FROM CUSTOMER WHERE DNI = ?";
-
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1,dni);
-            ResultSet result = statement.executeQuery();
-
-            while(result.next())
+            if(ValidateCredentials(customer.getPassword(),password))
             {
-                validDNI = Integer.parseInt(result.getString("DNI"));
-                validPassword = result.getString("Password");
+                //SUCCESSFUL
+                return 1;
             }
-
-        }
-        catch (SQLException e)
-        {
-            SQLHandler sqlHandler = new SQLHandler();
-            sqlHandler.ShowSQLException(e);
-        }
-
-        if(ValidateCredentials(validPassword,password))
-        {
-            System.out.println("WELCOME");
-            return 1;
-        }
-        if(validDNI == 0)
-        {
-            return -1;
+            else
+            {
+                //INVALID CREDENTIALS
+                return -1;
+            }
         }
         else
         {
-            System.out.println("INVALID CREDENTIALS");
+            //CREATE AN ACCOUNT
             return 0;
         }
     }
