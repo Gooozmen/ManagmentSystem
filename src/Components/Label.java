@@ -4,9 +4,15 @@ import javax.swing.*;
 
 public class Label extends JLabel {
 
-    public Label(String text, int x, int y, int width, int height)
+    private String text;
+
+    public Label(String message, int x, int y, int width, int height)
     {
-        this.setText(text);
+        this.setText(message);
         this.setBounds(x,y,width,height);
+    }
+
+    public String text() {
+        return text;
     }
 }

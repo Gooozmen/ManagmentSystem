@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DatabaseManager
 {
-    public Connection Connect()
+    public static Connection Connect()
     {
         Connection connection = null;
         try
