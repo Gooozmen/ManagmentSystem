@@ -20,6 +20,9 @@ public class Login
     private Button loginButton;
     private Label outputMessage;
 
+    private Integer fieldWidth = 210;
+    private Integer fieldHeight = 25;
+
     public Login(DatabaseManager dbManager, EmployeeRepository employeeRepository)
     {
         panel = new Panel();
@@ -34,12 +37,13 @@ public class Login
         passwordLabel = new Label("Password",40,85,80,25);
         panel.add(passwordLabel);
 
-        passwordText = new PasswordField(120,85,210,25);
+        passwordText = new PasswordField(120,85, fieldWidth, fieldHeight);
         panel.add(passwordText);
 
-        outputMessage = new Label("MESSAGE",190,160,150,25);
+        outputMessage = new Label("MESSAGE",190,160, fieldWidth, fieldHeight);
         panel.add(outputMessage);
 
+        loginButton = new Button("LOGIN",120,120, fieldWidth, fieldHeight);
         loginButton = new Button("LOGIN",120,120,210,25);
         loginButton.addActionListener(new ActionListener() {
             @Override

@@ -10,7 +10,7 @@ public class Main {
     {
         //database
         DatabaseManager DBManager = new DatabaseManager();
-        Connection connection = DBManager.Connect();
+        // Connection connection = DBManager.Connect();
 
         //repositories
         EmployeeRepository employeeRepository = new EmployeeRepository();
@@ -38,6 +38,6 @@ public class Main {
 
         Login loginPage = new Login(DBManager, employeeRepository);
 
-
+        // Home home = new Home();
     }
 }
