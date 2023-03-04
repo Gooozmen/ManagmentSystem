@@ -36,7 +36,8 @@ public class Main {
 
         //System.out.println(response);
 
-        Login loginPage = new Login(DBManager, employeeRepository);
+        // Login loginPage = new Login(DBManager, employeeRepository);
 
+        Home home = new Home();
     }
 }
