@@ -1,10 +1,5 @@
 package Pages;
 
-import DB.DatabaseManager;
-import Repositories.CustomerRepository;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
 import Components.*;
 public class Register
 {

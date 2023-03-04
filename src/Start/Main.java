@@ -13,7 +13,7 @@ public class Main {
         Connection connection = DBManager.Connect();
 
         //repositories
-        CustomerRepository customerRepository = new CustomerRepository();
+        EmployeeRepository employeeRepository = new EmployeeRepository();
         //EventRepository eventRepository = new EventRepository();
         //SaleRepository saleRepository = new SaleRepository();
 
@@ -36,7 +36,7 @@ public class Main {
 
         //System.out.println(response);
 
-        Login loginPage = new Login(DBManager,customerRepository);
+        Login loginPage = new Login(DBManager, employeeRepository);
 
 
     }

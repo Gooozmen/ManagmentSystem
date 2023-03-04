@@ -1,7 +1,7 @@
 package Pages;
 
 import DB.DatabaseManager;
-import Repositories.CustomerRepository;
+import Repositories.EmployeeRepository;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,10 +18,9 @@ public class Login
     private TextField userText;
     private PasswordField passwordText;
     private Button loginButton;
-    private Button registerButton;
     private Label outputMessage;
 
-    public Login(DatabaseManager dbManager, CustomerRepository customerRepository)
+    public Login(DatabaseManager dbManager, EmployeeRepository employeeRepository)
     {
         panel = new Panel();
         frame = new Frame(300, 450,panel);
@@ -41,32 +40,22 @@ public class Login
         outputMessage = new Label("MESSAGE",190,160,150,25);
         panel.add(outputMessage);
 
-        loginButton = new Button("LOGIN",120,120,100,25);
+        loginButton = new Button("LOGIN",120,120,210,25);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int DNI = Integer.parseInt(userText.getText());
+                String DNI = userText.getText();
                 String password = passwordText.getText();
 
                 Connection connection = dbManager.Connect();
 
-                int response = customerRepository.Login(DNI, password, connection);
+                int response = employeeRepository.Login(DNI, password, connection);
                 String message = OutputResponseAssignation(response);
                 outputMessage.setText(message);
             }
         });
         panel.add(loginButton);
-
-        registerButton = new Button("Register",230,120,100,25);
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                new Register();
-            }
-        });
-        panel.add(registerButton);
         panel.repaint();
     }
 
