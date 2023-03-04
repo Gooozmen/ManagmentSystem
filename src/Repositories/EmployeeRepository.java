@@ -69,7 +69,7 @@ public class EmployeeRepository
 
         try (connection)
         {
-            String query = "SELECT * FROM CUSTOMER WHERE DNI = ?";
+            String query = "SELECT * FROM EMPLOYEE WHERE DNI = ?";
 
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,identityNumber);
