@@ -44,7 +44,6 @@ public class Login
         panel.add(outputMessage);
 
         loginButton = new Button("LOGIN",120,120, fieldWidth, fieldHeight);
-        loginButton = new Button("LOGIN",120,120,210,25);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
