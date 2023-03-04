@@ -1,25 +1,21 @@
 package Entities;
 
-public class Customer
+public class Employee
 {
-    private int dni;
-    private String name;
+    private String dni;
     private String password;
     private int accessType;
 
-    public int getDni() { return dni; }
-    public void setDni(int dni) { this.dni = dni; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getDni() { return dni; }
+    public void setDni(String dni) { this.dni = dni; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
     public int getAccessType() { return accessType; }
     public void setAccessType(int accessType) { this.accessType = accessType; }
 
-    public Customer(int dni, String name, String password, int accessType)
+    public Employee(String dni, String password, int accessType)
     {
         setDni(dni);
-        setName(name);
         setPassword(password);
         setAccessType(accessType);
     }

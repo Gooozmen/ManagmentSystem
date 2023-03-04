@@ -111,8 +111,7 @@ public class AccessTypeRepository
 
         try (connection)
         {
-            CustomerRepository customerRepository = new CustomerRepository();
-            customerRepository.UpdatePermission(accessid,5, connection);
+            EmployeeRepository employeeRepository = new EmployeeRepository();
 
             String query = "DELETE ACCESSTYPE " +
                     "WHERE ACCESSID = ?";
@@ -136,8 +135,7 @@ public class AccessTypeRepository
 
         try (connection)
         {
-            CustomerRepository customerRepository = new CustomerRepository();
-            customerRepository.UpdatePermission(currentId,5, connection);
+            EmployeeRepository employeeRepository = new EmployeeRepository();
 
             String query = "UPDATE ACCESSTYPE " +
                     "SET ACCESSID = ? " +
