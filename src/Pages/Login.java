@@ -2,7 +2,6 @@ package Pages;
 
 import DB.DatabaseManager;
 import Repositories.EmployeeRepository;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -17,7 +16,6 @@ public class Login
     private PasswordField passwordText;
     private Button loginButton;
     private Label outputMessage;
-
     private Integer fieldWidth = 210;
     private Integer fieldHeight = 25;
     EmployeeRepository employeeRepository;
