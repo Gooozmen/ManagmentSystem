@@ -2,7 +2,6 @@ package Pages;
 
 import DB.DatabaseManager;
 import Repositories.EmployeeRepository;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -19,11 +18,19 @@ public class Login
     private PasswordField passwordText;
     private Button loginButton;
     private Label outputMessage;
-
     private Integer fieldWidth = 210;
     private Integer fieldHeight = 25;
+    private EmployeeRepository employeeRepository;
+    private DatabaseManager dbManager;
 
-    public Login(DatabaseManager dbManager, EmployeeRepository employeeRepository)
+    public Login()
+    {
+        employeeRepository = new EmployeeRepository();
+        dbManager = new DatabaseManager();
+        Start();
+    }
+
+    public void Start()
     {
         panel = new Panel();
         frame = new Frame(300, 450,panel);
