@@ -1,6 +1,8 @@
 package Start;
 
 import java.sql.Connection;
+import java.util.List;
+import Entities.*;
 import DB.DatabaseManager;
 import Pages.*;
 import Repositories.*;
@@ -12,8 +14,13 @@ public class Main {
         DatabaseManager DBManager = new DatabaseManager();
         Connection connection = DBManager.Connect();
 
-        //repositories
-        EmployeeRepository employeeRepository = new EmployeeRepository();
+        //EMPLOYEE REPOSITORY TEST
+        List<Employee> employees;
+        EmployeeRepository employeeRepository = new EmployeeRepository(DBManager);
+        employees = employeeRepository.GetAll(connection);
+
+        employeeRepository.PrintAll(employees);
+
         //EventRepository eventRepository = new EventRepository();
         //SaleRepository saleRepository = new SaleRepository();
 
@@ -36,7 +43,7 @@ public class Main {
 
         //System.out.println(response);
 
-        Login loginPage = new Login(DBManager, employeeRepository);
+        //Login loginPage = new Login(DBManager, employeeRepository);
 
 
     }
