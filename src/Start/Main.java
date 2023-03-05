@@ -1,19 +1,14 @@
 package Start;
 
-import java.sql.Connection;
-import DB.DatabaseManager;
 import Pages.*;
-import Repositories.*;
 
 public class Main {
     public static void main(String[] args)
     {
         //database
-        DatabaseManager DBManager = new DatabaseManager();
         // Connection connection = DBManager.Connect();
 
         //repositories
-        EmployeeRepository employeeRepository = new EmployeeRepository();
         //EventRepository eventRepository = new EventRepository();
         //SaleRepository saleRepository = new SaleRepository();
 
@@ -36,8 +31,8 @@ public class Main {
 
         //System.out.println(response);
 
-        // Login loginPage = new Login(DBManager, employeeRepository);
+        new Login();
 
-        Home home = new Home();
+        // AdminPanel home = new AdminPanel();
     }
 }

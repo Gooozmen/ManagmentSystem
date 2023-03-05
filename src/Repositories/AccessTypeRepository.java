@@ -111,8 +111,6 @@ public class AccessTypeRepository
 
         try (connection)
         {
-            EmployeeRepository employeeRepository = new EmployeeRepository();
-
             String query = "DELETE ACCESSTYPE " +
                     "WHERE ACCESSID = ?";
 
@@ -135,7 +133,6 @@ public class AccessTypeRepository
 
         try (connection)
         {
-            EmployeeRepository employeeRepository = new EmployeeRepository();
 
             String query = "UPDATE ACCESSTYPE " +
                     "SET ACCESSID = ? " +
