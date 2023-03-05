@@ -19,14 +19,13 @@ public class EmployeeRepository
     {
         this.db = db;
     }
-
     public void Print(Employee employee)
     {
         System.out.println("DNI: " + employee.getDni());
         System.out.println("PASSWORD: " + employee.getPassword());
         System.out.println("ACCESSID: " + employee.getAccessType());
+        System.out.println("\n");
     }
-
     public void PrintAll(List<Employee> employees)
     {
         for (Employee employee : employees)
