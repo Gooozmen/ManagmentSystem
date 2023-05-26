@@ -1,7 +1,6 @@
 package Entities;
 
 import java.util.Date;
-import java.util.Set;
 
 public class Event
 {
