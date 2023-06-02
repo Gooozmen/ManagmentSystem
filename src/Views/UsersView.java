@@ -8,15 +8,16 @@ import DB.DatabaseManager;
 import Entities.Employee;
 import Repositories.EmployeeRepository;
 
-public class Users extends Panel{
+public class UsersView extends Panel{
     
     private EmployeeRepository employeeRepository = new EmployeeRepository();
     private String[] columns = {"DNI", "PASSWORD", "ACCESS TYPE"};
     private String[] accessTypes = {"undefined","Admin","Employee","Blocked"};
 
-    public Users(int width, int height) {
+    public UsersView(int x, int y, int width, int height) {
         
         this.setSize(width, height);
+        this.setBounds(x,y,width,height);
 
         List<Employee> employees = employeeRepository.GetAll(DatabaseManager.Connect());
 

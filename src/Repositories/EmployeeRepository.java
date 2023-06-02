@@ -97,16 +97,21 @@ public class EmployeeRepository
 
         try (connection)
         {
-            String query = "INSERT INTO EMPLOYEE (DNI,PASSWORD,ACCESSID) " +
-                           "VALUES(?,?,?)";
+            Employee existentEmployee = GetBy(employee.getDni(), DatabaseManager.Connect());
 
-            PreparedStatement statement = connection.prepareStatement(query);
+            if(existentEmployee == null)
+            {
+                String query = "INSERT INTO EMPLOYEE (DNI,PASSWORD,ACCESSID) " +
+                        "VALUES(?,?,?)";
 
-            statement.setString(1, employee.getDni());
-            statement.setString(2, employee.getPassword());
-            statement.setInt(3, employee.getAccessType());
+                PreparedStatement statement = DatabaseManager.Connect().prepareStatement(query);
 
-            row = statement.executeUpdate();
+                statement.setString(1, employee.getDni());
+                statement.setString(2, employee.getPassword());
+                statement.setInt(3, employee.getAccessType());
+
+                row = statement.executeUpdate();
+            }
         }
         catch (SQLException e)
         {
@@ -214,12 +219,19 @@ public class EmployeeRepository
     public int Login(String dni, String password, Connection connection)
     {
         Employee employee = GetBy(dni, connection);
+
         if(employee != null)
         {
-            if(ValidateCredentials(employee.getPassword(),password))
+
+            if(ValidateCredentials(employee.getPassword(),password) && employee.getAccessType() == 1)
             {
                 //SUCCESSFUL
                 return 1;
+            }
+            if(ValidateCredentials(employee.getPassword(),password) && employee.getAccessType() != 1)
+            {
+                //SUCCESSFUL
+                return 0;
             }
             else
             {

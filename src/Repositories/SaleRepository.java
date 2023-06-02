@@ -35,7 +35,7 @@ public class SaleRepository
         try (connection)
         {
             Statement statement = connection.createStatement();
-            String query = "SELECT * FROM SALE";
+            String query = "SELECT * FROM SALE ORDER BY SALEDATE DESC";
             ResultSet resultSet = statement.executeQuery(query);
 
             while(resultSet.next())
@@ -44,10 +44,10 @@ public class SaleRepository
                 int eventId = Integer.parseInt(resultSet.getString("EVENTID"));
                 int locationId = Integer.parseInt(resultSet.getString("LOCATIONID"));
                 int price = Integer.parseInt(resultSet.getString("PRICE"));
-                int customerDni = Integer.parseInt(resultSet.getString("CUSTOMERDNI"));
-                Date eventDate = resultSet.getDate("EventDate");
+                String customerDni = resultSet.getString("BUYERID");
+                Date saleDate = resultSet.getDate("SALEDATE");
 
-                Sale sale = new Sale(saleId,eventId,locationId,price,customerDni,eventDate);
+                Sale sale = new Sale(saleId,eventId,locationId,price,customerDni,saleDate);
                 sales.add(sale);
             }
         }
@@ -77,10 +77,10 @@ public class SaleRepository
                 int eventId = Integer.parseInt(result.getString("EVENTID"));
                 int locationId = Integer.parseInt(result.getString("LOCATIONID"));
                 int price = Integer.parseInt(result.getString("PRICE"));
-                int customerDni = Integer.parseInt(result.getString("CUSTOMERDNI"));
-                Date eventDate = result.getDate("EventDate");
+                String customerDni = result.getString("BUYERID");
+                Date saleDate = result.getDate("SALEDATE");
 
-                sale = new Sale(saleId,eventId,locationId,price,customerDni,eventDate);
+                sale = new Sale(saleId,eventId,locationId,price,customerDni,saleDate);
             }
         }
         catch (SQLException e)
@@ -159,7 +159,7 @@ public class SaleRepository
             statement.setInt(2,sale.getEventId());
             statement.setInt(3,sale.getLocationId());
             statement.setFloat(4,sale.getPrice());
-            statement.setInt(5,sale.getCustomerDni());
+            statement.setString(5,sale.getCustomerDni());
             statement.setDate(6, (java.sql.Date) sale.getSaleDate());
 
             row = statement.executeUpdate();

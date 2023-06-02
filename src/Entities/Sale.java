@@ -9,7 +9,7 @@ public class Sale
     private int eventId;
     private float price;
     private Date saleDate;
-    private int customerDni;
+    private String customerDni;
 
     public int getSaleId() { return saleId; }
     public void setSaleId(int saleId) { this.saleId = saleId; }
@@ -21,10 +21,10 @@ public class Sale
     public void setPrice(float price) { this.price = price; }
     public Date getSaleDate() { return saleDate; }
     public void setSaleDate(Date saleDate) { this.saleDate = saleDate; }
-    public int getCustomerDni() { return customerDni; }
-    public void setCustomerDni(int customerDni) { this.customerDni = customerDni; }
+    public String getCustomerDni() { return customerDni; }
+    public void setCustomerDni(String customerDni) { this.customerDni = customerDni; }
 
-    public Sale (int saleId,int eventId,int locationId,int price,int customerDni,Date eventDate)
+    public Sale (int saleId,int eventId,int locationId,int price,String customerDni,Date saleDate)
     {
         setCustomerDni(customerDni);
         setEventId(eventId);

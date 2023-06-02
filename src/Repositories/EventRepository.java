@@ -39,7 +39,7 @@ public class EventRepository
             {
                 int id = Integer.parseInt(resultSet.getString("EventID"));
                 String name = resultSet.getString("Name");
-                Date date = resultSet.getDate("EventDate");
+                String date = String.valueOf(resultSet.getDate("EventDate"));
 
                 Event event = new Event(id,name,date);
 
@@ -71,7 +71,7 @@ public class EventRepository
 
                 int id = Integer.parseInt(result.getString("EventID"));
                 String name = result.getString("Name");
-                Date date = result.getDate("EventDate");
+                String date = String.valueOf(result.getDate("EventDate"));
 
                 event = new Event(id,name,date);
             }
@@ -90,16 +90,12 @@ public class EventRepository
 
         try (connection)
         {
-            String query = "SET IDENTITY_INSERT EVENT ON " +
-                    "INSERT INTO EVENT (EVENTID,NAME,EVENTDATE) " +
-                    "VALUES(?,?,?) " +
-                    "SET IDENTITY_INSERT EVENT OFF";
+            String query ="INSERT INTO EVENT (NAME,EVENTDATE) VALUES(?,?)";
 
             PreparedStatement statement = connection.prepareStatement(query);
 
-            statement.setInt(1,event.getEventId());
-            statement.setString(2,event.getName());
-            statement.setDate(3, (java.sql.Date)event.getEventDate());
+            statement.setString(1,event.getName());
+            statement.setString(2, event.getEventDate());
 
             row = statement.executeUpdate();
         }
